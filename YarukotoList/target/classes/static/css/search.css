@@ -1,6 +1,27 @@
-table th, table td{
-	border: 1px solid #00008b;
-	border-top: 1px solid #00008b;
+.table thead th, .table tbody td{
+	border: 1px solid #6fa3b4;
+}
+
+.table thead tr {
+	text-align: center;
+}
+
+.table thead th {
+	color: #25667c;
+}
+
+.search_table_header{
+	background-color:#add8e6;
+}
+
+input {
+	border: none;
+	outline: none;
+}
+
+textarea {
+	border: none;
+	outline: none;
 }
 
 .search_table{
@@ -16,6 +37,3 @@ table th, table td{
     text-align: right;
 }
 
-.search_table_header{
-	background-color:#00bfff;
-}

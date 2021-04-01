@@ -15,55 +15,57 @@
 				<div class="searc_button_frame">
 					<input type="submit" value="検索" id="search_todo">
 				</div>
-				<table class="table search_table border">
+				<br/>
+				<table class="table search_table">
 					<thead class="search_table_header">
 						<tr>
-							<td>登録日</td>
-							<td>タスク</td>
-							<td>タスク種類</td>
-							<td>期限</td>
-							<td>ステータス</td>
-							<td>備考欄</td>
+							<th>登録日</th>
+							<th>タスク</th>
+							<th>タスク種類</th>
+							<th>期限</th>
+							<th>ステータス</th>
+							<th>備考欄</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="text" id="regist_date_s" name="regist_date_s"></td>
-							<td><input type="text" id="task_s" name="task_s"></td>
-							<td><input type="text" id="task_type_s" name="task_type_s"></td>
-							<td><input type="text" id="deadline_s" name="deadline_s"></td>
+							<td><input type="text" id="regist_date" name="regist_date" placeholder="登録日を入力"></td>
+							<td><input type="text" id="task" name="task" placeholder="タスクを入力"></td>
+							<td><input type="text" id="task_type" name="task_type" placeholder="タスク種類を入力"></td>
+							<td><input type="text" id="deadline" name="deadline" placeholder="期限を入力"></td>
 							<td>
-								<select id="status_s" name="status_s">
+								<select id="status" name="status">
 									<option value="">---</option>
-									<option value="waiting">未着手</option>
-									<option value="working">作業中</option>
-									<option value="pending">保留</option>
-									<option value="discontinued">中止</option>
-									<option value="done">完了</option>
+									<option value="1">未着手</option>
+									<option value="2">作業中</option>
+									<option value="3">保留</option>
+									<option value="4">中止</option>
+									<option value="5">完了</option>
 								</select>
 							</td>
 							<td>
-								<textarea id="memo_s" name="memo_s" rows="1" cols="15"></textarea>
+								<textarea id="memo" name="memo" rows="1" cols="15" placeholder="備考を入力"></textarea>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 			</form>
 		</div>
+		<br/>
 		<div>
 			<table class="table search_table">
-				<thead>
+				<thead class="search_table_header">
 					<tr>
-						<td>No.</td>
-						<td>登録日</td>
-						<td>タスク</td>
-						<td>タスク種類</td>
-						<td>期限</td>
-						<td>ステータス</td>
-						<td>備考欄</td>
+						<th>No.</th>
+						<th>登録日</th>
+						<th>タスク</th>
+						<th>タスク種類</th>
+						<th>期限</th>
+						<th>ステータス</th>
+						<th>備考欄</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="result_table_body">
 					<!--  <tr th:each="list, innerStatus: ${search_result_list}">
 						<td><span th:id="'seqNo_'+${innerStatus.count}" th:text="${innerStatus.count}"></span></td>
 						<td><span th:text="${list.regist_date}"></span></td>
