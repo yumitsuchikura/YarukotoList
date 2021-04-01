@@ -1,0 +1,16 @@
+.regist_table{
+	width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.regist_input{
+	width: 650px;
+	height: 30px;
+	font-size: 15px;
+}
+
+textarea{
+	width: 650px;
+	font-size: 15px;
+}
