@@ -1,54 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yarukoto.main.dao.TYarukotoMapperMod">
-  <resultMap id="BaseResultMap" type="com.yarukoto.main.dto.gen.TYarukoto">
+  <resultMap id="BaseResultMap" type="com.yarukoto.main.dto.TYarukotoMod">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="regist_date" jdbcType="TIMESTAMP" property="registDate" />
+    <result column="regist_date" jdbcType="VARCHAR" property="registDate" />
     <result column="task" jdbcType="VARCHAR" property="task" />
     <result column="task_type" jdbcType="VARCHAR" property="taskType" />
-    <result column="deadline" jdbcType="TIMESTAMP" property="deadline" />
+    <result column="deadline" jdbcType="VARCHAR" property="deadline" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="memo" jdbcType="VARCHAR" property="memo" />
     <result column="delete_flg" jdbcType="INTEGER" property="deleteFlg" />
   </resultMap>
   
   <select id="getYarukotoList" parameterType="com.yarukoto.main.dto.gen.TYarukoto" resultMap="BaseResultMap">
-    select count(*) from t_yarukoto
-    
     SELECT
-    	regist_date,
+    	DATE_FORMAT(regist_date, '%Y/%m/%d') as regist_date,
     	task,
     	task_type,
-    	deadline,
+    	DATE_FORMAT(deadline, '%Y/%m/%d') as deadline,
     	status,
     	memo
     FROM
     	t_yarukoto
     WHERE
-    	<if test="#{regist_date, jdbcType=TIMESTAMP} != null and #{regist_date, jdbcType=TIMESTAMP} != ''">
-    		regist_date = #{regist_date, jdbcType=TIMESTAMP}
-    		AND
-    	</if>
-    	<if test="#{task, jdbcType=VARCHAR} != null and #{task, jdbcType=VARCHAR} != ''">
-    		task LIKE '%#{task, jdbcType=VARCHAR}%'
-    		AND
-    	</if>
-    	<if test="#{task_type, jdbcType=VARCHAR} != null and #{task_type, jdbcType=VARCHAR} != ''">
-    		task_type = #{task_type, jdbcType=VARCHAR}
-    		AND
-    	</if>
-    	<if test="#{deadline, jdbcType=TIMESTAMP} != null and #{deadline, jdbcType=TIMESTAMP} != ''">
-    		deadline >= #{deadline, jdbcType=TIMESTAMP}
-    		AND
-    	</if>
-    	<if test="#{status, jdbcType=INTEGER} != null and #{status, jdbcType=INTEGER} != ''">
-    		status = #{status, jdbcType=INTEGER}
-    		AND
-    	</if>
-    	<if test="#{memo, jdbcType=VARCHAR} != null and #{memo, jdbcType=VARCHAR} != ''">
-    		memo LIKE '%#{memo, jdbcType=VARCHAR}%'
-    		AND
-    	</if>
+    	<if test="registDate != null">
+   			regist_date = #{registDate, jdbcType=TIMESTAMP}
+   			AND
+   		</if>
+   		<if test="task != null and task != ''">
+   			task LIKE CONCAT('%', #{task, jdbcType=VARCHAR}, '%')
+   			AND
+   		</if>
+   		<if test="taskType != null and taskType != ''">
+   			task_type = #{taskType, jdbcType=VARCHAR}
+   			AND
+   		</if>
+   		<if test="deadline != null">
+   			deadline >= #{deadline, jdbcType=TIMESTAMP}
+   			AND
+   		</if>
+   		<if test="status != null">
+   			status = #{status, jdbcType=INTEGER}
+   			AND
+   		</if>
+   		<if test="memo != null and memo != ''">
+   			memo LIKE CONCAT('%', #{memo, jdbcType=VARCHAR}, '%')
+   			AND
+   		</if>
     	delete_flg = 0
   </select>
   

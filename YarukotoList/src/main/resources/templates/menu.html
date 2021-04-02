@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{${_layout_}}">
+	<head>
+		<title>メニュー</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<!--CSS(ページ固有)の設定-->
+		<link href="../static/css/menu.css" th:href="@{/css/menu.css}" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<div layout:fragment="contents">
+			<div class="container">
+				<div class="row">
+					<input type="button" value="検索" id="search_screen">
+					<input type="button" value="登録" id="regist_screen">
+				</div>
+				<div class="row">
+					<input type="button" value="XX" id="XX_screen">
+					<input type="button" value="YY" id="YY_screen">
+				</div>
+			</div>
+		</div>
+	</body>
+	<th:block layout:fragment="pageScript">
+		<!--JavaScript(ページ固有))の設定-->
+	</th:block>
+</html>

@@ -16,18 +16,19 @@ import com.yarukoto.main.form.SearchForm;
 import com.yarukoto.main.service.impl.SearchServiceImpl;
 
 @Controller
-public class SearchController {
+public class SearchController extends BaseController {
 	
 	@Autowired
 	SearchServiceImpl searchService;
-
-	@RequestMapping("/")
+	
+	@RequestMapping("/search")
 	public ModelAndView openSearch(ModelAndView mav) {
+		mav.addObject("activeTab", "search-page");
 		mav.setViewName("search");
 		return mav;
 	}
 	
-	@RequestMapping("/search_task")
+	@RequestMapping("/search-task")
 	public ModelAndView searchTask(ModelAndView mav,
 									@ModelAttribute("searchForm") SearchForm form) {
 		
@@ -35,8 +36,12 @@ public class SearchController {
         Date regist_date = null;
         Date deadline = null;
 		try {
-			regist_date = sdFormat.parse(form.getRegist_date());
-			deadline = sdFormat.parse(form.getDeadline());
+			if(form.getRegist_date() != null && form.getRegist_date() != "") {
+				regist_date = sdFormat.parse(form.getRegist_date());
+			}
+			if(form.getDeadline() != null && form.getDeadline() != "") {
+				deadline = sdFormat.parse(form.getDeadline());
+			}
 		} catch (ParseException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
@@ -47,15 +52,15 @@ public class SearchController {
 		tYarukoto.setTask(form.getTask());
 		tYarukoto.setTaskType(form.getTask_type());
 		tYarukoto.setDeadline(deadline);
-		if(form.getStatus() != null && form.getStatus() != "") {
-			tYarukoto.setStatus(Integer.parseInt(form.getStatus()));
+		if(form.getStat() != null && form.getStat() != "") {
+			tYarukoto.setStatus(Integer.parseInt(form.getStat()));
 		}
 		tYarukoto.setMemo(form.getMemo());
 		
 		List<TYarukoto> tYarukoto_list = searchService.getYarukotoList(tYarukoto);
 		
-		
-
+		mav.addObject("tYarukoto_list", tYarukoto_list);
+		mav.addObject("activeTab", "search-page");
 		mav.setViewName("search");
 		return mav;
 	}

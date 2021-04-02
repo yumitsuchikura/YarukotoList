@@ -14,12 +14,7 @@
 	background-color:#add8e6;
 }
 
-input {
-	border: none;
-	outline: none;
-}
-
-textarea {
+.input-no-border {
 	border: none;
 	outline: none;
 }
@@ -28,6 +23,7 @@ textarea {
 	width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 5px;
 }
 
 .searc_button_frame{

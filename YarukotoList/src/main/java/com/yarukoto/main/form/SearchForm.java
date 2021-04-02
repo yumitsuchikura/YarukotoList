@@ -13,7 +13,7 @@ public class SearchForm {
 	
 	private String deadline;
 	
-	private String status;
+	private String stat;
 	
 	private String memo;
 

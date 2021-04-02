@@ -1,0 +1,23 @@
+.container {
+	max-width: 1230px;
+}
+
+div .row > h3 .main-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-tabs .nav-link {
+	color: #25667c;
+    background-color: #add8e6;
+}
+
+.nav-tabs .nav-link.active {
+	background-color: #FFFFFF;
+}
+
+.nav-tabs .nav-link:hover {
+	color: #495057;
+    background-color: #DDDDDD;
+}
